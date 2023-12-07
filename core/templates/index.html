@@ -1,0 +1,249 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авторизация</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'site.css' %}" />
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+
+
+
+                <a href="/">
+                    <span class="navbar-brand">
+                        <img src="{% static 'icon.png' %}" class="icon-banner">
+
+                    </span>
+                </a>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container body-content" style="min-height: 89vh; position: relative; margin-bottom: 10px;">
+
+        <div class="login-page">
+            <div class="page-header">
+                <h1>Авторизация</h1>
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Введите Ваш логин и пароль</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="" />
+
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Логин" autofocus type="text"
+                                            data-val="true" data-val-required="The Username field is required."
+                                            id="login" name="login" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Пароль"
+                                            autocomplete="off" data-val="true"
+                                            data-val-required="The Password field is required." id="password"
+                                            name="password">
+                                    </div>
+                                    <div class="form-group login-remember">
+                                        <label for="RememberLogin">
+                                            <input type="checkbox" data-val="true"
+                                                data-val-required="The RememberLogin field is required."
+                                                id="RememberLogin" name="RememberLogin" value="true">
+                                            <strong>Запомнить меня</strong>
+                                        </label>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+
+                                        <br />
+
+                                        <button class="btn btn-primary" name="button" value="login">Вход</button>
+
+                                        <a class="btn btn-default" href="#">Забыли пароль?</a>
+
+                                    </div>
+                                </fieldset>
+                                <input name="__RequestVerificationToken" type="hidden"
+                                    value="CfDJ8FF39Qg-QtdOqm7V3IKtvWWOIyoL9fZQ2_vsaVA580swUmdhqcam36dZ7WcQWrSEoi_RmmJiTLjrLtyvWLdZe3miJGQQTRh6pTFO18GZyOJIidZrxJEoEY6WiBnHpar3Xzddqc5YbSVa12nK_zQsn-M" /><input
+                                    name="RememberLogin" type="hidden" value="false">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 external-providers">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Авторизация через:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-inline">
+                                <li>
+                                    <a class="btn btn-default" href="/External/Challenge?provider=Facebook">
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="/External/Challenge?provider=Google">
+                                        Google
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="text-right" style="text-align: right;position: absolute;bottom: 0; right: 15px; ">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
+                Политика конфиденциальности
+            </button>
+        </div>
+    </div>
+
+    <script src="{% static 'jquery.js' %}"></script>
+    <script src="{% static 'bootstrap.js' %}"></script>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center" id="exampleModalLabel">Политика конфиденциальности</h3>
+                    <button type="button" style="position: absolute;top: 10px;right: 10px;" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>На веб-сайте Bilimkana, доступному <a href="https://auth.bilimkana.kg">по адресу</a>, одним из
+                        наших главных приоритетов является конфиденциальность наших посетителей. Этот документ Политики
+                        конфиденциальности содержит типы информации, которая собирается и регистрируется на сайте
+                        Bilimkana, и то, как мы ее используем.</p>
+
+                    <p>Если у вас есть дополнительные вопросы или вам нужна дополнительная информация о нашей Политике
+                        конфиденциальности, не стесняйтесь <a href="mailto:info@bilimkana.kg">обращаться к нам</a>.</p>
+
+                    <p>Настоящая Политика конфиденциальности применяется только к нашей деятельности в Интернете и
+                        действительна для посетителей нашего веб-сайта в отношении информации, которую они передали
+                        и/или собрали в Bilimkana. Эта политика не распространяется на любую информацию, собранную в
+                        автономном режиме или по каналам, отличным от данного веб-сайта. </p>
+
+                    <h4 class="text-center">Соглашение</h4>
+
+                    <p>Используя наш веб-сайт, вы тем самым соглашаетесь с нашей Политикой конфиденциальности и
+                        соглашаетесь с ее условиями.</p>
+
+                    <h4 class="text-center">Информация, которую мы собираем</h4>
+
+                    <p>Личная информация, которую вас просят предоставить, и причины, по которым вас просят ее
+                        предоставить, будут разъяснены вам в тот момент, когда мы попросим вас предоставить вашу личную
+                        информацию.</p>
+                    <p>Если вы свяжетесь с нами напрямую, мы можем получить дополнительную информацию о вас, такую ​​как
+                        ваше имя, адрес электронной почты, номер телефона, содержание сообщения и/или вложения, которые
+                        вы можете нам отправить, а также любую другую информацию, которую вы можете предоставить.</p>
+                    <p>Когда вы регистрируете учетную запись, мы можем запросить вашу контактную информацию, включая
+                        такие элементы, как имя, адрес, адрес электронной почты и номер телефона.</p>
+
+                    <h4 class="text-center">Как мы используем вашу информацию</h4>
+
+                    <p>Мы используем собранную информацию различными способами, в том числе для:</p>
+
+                    <ul>
+                        <li>Управления и поддержки нашего веб-сайта</li>
+                        <li>Понимания и анализа того, как вы используете наш веб-сайт</li>
+                        <li>Разработки новых продуктов, услуг, функций и возможностей</li>
+                        <li>Общения с вами напрямую, в том числе для обслуживания клиентов, для предоставления вам
+                            обновлений и другой информации, касающейся веб-сайта, а также в маркетинговых и рекламных
+                            целях.</li>
+                        <li>Отправления вам электронных писем либо SMS сообщений</li>
+                    </ul>
+                    <p>Обратите внимание, что мы никогда не предоставляем ваши личные данные третьим лицам.</p>
+
+
+                    <h4 class="text-center">Файлы журналирования</h4>
+
+                    <p>Bilimkana следует стандартной процедуре использования файлов журналов. Эти файлы регистрируют
+                        посетителей, когда они посещают веб-сайты. Все хостинговые компании делают это и являются частью
+                        аналитики хостинговых услуг. Информация, собираемая файлами журнала, включает адреса
+                        интернет-протокола (IP), тип браузера, поставщика услуг Интернета (ISP), отметку даты и времени,
+                        страницы перехода/выхода и, возможно, количество кликов. Они не связаны с какой-либо
+                        информацией, позволяющей установить личность. Эта информация предназначена для анализа
+                        тенденций, администрирования сайта, отслеживания перемещений пользователей по сайту и сбора
+                        демографической информации.</p>
+
+                    <h4 class="text-center">Файлы cookie и веб-маяки</h4>
+
+                    <p>Как и любой другой веб-сайт, Bilimkana использует файлы cookie. Эти файлы cookie используются для
+                        хранения информации, включая предпочтения посетителей и страницы на веб-сайте, к которым
+                        посетитель обращался или посещал. Эта информация используется для оптимизации работы
+                        пользователей путем настройки содержимого нашей веб-страницы в зависимости от типа браузера
+                        посетителей и/или другой информации.</p>
+
+
+                    <h4 class="text-center">Политика конфиденциальности третьих лиц</h4>
+
+                    <p>Политика конфиденциальности Bilimkana не распространяется на другие веб-сайты (в частности Google
+                        и Facebook). Таким образом, мы советуем вам ознакомиться с соответствующими политиками
+                        конфиденциальности этих сторонних сервисов для получения более подробной информации. Это может
+                        включать их методы и инструкции о том, как отказаться от определенных вариантов предоставления
+                        персональных данных. </p>
+
+                    <p>Вы можете отключить файлы cookie в настройках своего браузера, но мы не гарантируем правильное
+                        поведение нашей системы в этом случае. Чтобы узнать более подробную информацию об управлении
+                        файлами cookie в конкретных веб-браузерах, её можно найти на соответствующих веб-сайтах
+                        браузеров.</p>
+
+                    <h4 class="text-center">Удаление пользовательских данных</h4>
+                    <p>Если вы хотите удалить свои персональные данные из нашей системы, отправьте запрос на <a
+                            href="mailto:info@bilimkana.kg">этот адрес электронной почты</a>, и ваши данные будут
+                        удалены в течении трех суток с момента обращения.</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

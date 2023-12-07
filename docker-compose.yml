@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:14.7-alpine
+    env_file:
+      - .env
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  api:
+    build:
+      dockerfile: docker/backend/Dockerfile
+      context: .
+    volumes:
+      - static:/usr/src/app/static
+      - media:/usr/src/app/media
+      - .:/usr/src/app/
+    entrypoint: /usr/src/app/docker/backend/wsgi-entrypoint.sh
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+volumes:
+  static:
+  media:
+  db:
+  .:
