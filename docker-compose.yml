@@ -23,6 +23,20 @@ services:
       - 8000:8000
     depends_on:
       - db
+  
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    env_file:
+      - .env
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - api
+    ports:
+      - "80:80"
 
 volumes:
   static:
